@@ -27,13 +27,15 @@ public class CustomerRewardApplication {
 	public CommandLineRunner demo(TransactionRepository transactionRepository, CustomerRepository customerRepository) {
 		return (args) -> {
 			customerRepository.save(new Customer("Jack"));
-			System.out.println("Finding all customers");
+			customerRepository.save(new Customer("Paul"));
 			Customer customer = customerRepository.findById(1L);
-			System.out.println("Customer: " + customer);
+			Customer customer2 = customerRepository.findById(2L);
 
-			transactionRepository.save(new Transaction(new BigDecimal(10.00), LocalDate.now(), customer));
-			transactionRepository.save(new Transaction(new BigDecimal(20.00), LocalDate.now(), customer));
-			transactionRepository.save(new Transaction(new BigDecimal(100.00), LocalDate.now(), customer));
+			transactionRepository.save(new Transaction(new BigDecimal("10.00"), LocalDate.now(), customer));
+			transactionRepository.save(new Transaction(new BigDecimal("20.00"), LocalDate.now(), customer));
+			transactionRepository.save(new Transaction(new BigDecimal("100.00"), LocalDate.now(), customer));
+			transactionRepository.save(new Transaction(new BigDecimal("51"), LocalDate.parse("2022-01-01"), customer2));
+			transactionRepository.save(new Transaction(new BigDecimal("51"), LocalDate.parse("2022-04-01"), customer2));
 			Iterable<Transaction> transactions = transactionRepository.findAll();
 			for (Transaction t : transactions) {
 				System.out.println("Transaction: " + t);
