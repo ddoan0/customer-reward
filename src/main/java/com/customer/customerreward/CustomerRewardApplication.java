@@ -33,6 +33,7 @@ public class CustomerRewardApplication {
 
 			transactionRepository.save(new Transaction(new BigDecimal(10.00), LocalDate.now(), customer));
 			transactionRepository.save(new Transaction(new BigDecimal(20.00), LocalDate.now(), customer));
+			transactionRepository.save(new Transaction(new BigDecimal(100.00), LocalDate.now(), customer));
 			Iterable<Transaction> transactions = transactionRepository.findAll();
 			for (Transaction t : transactions) {
 				System.out.println("Transaction: " + t);

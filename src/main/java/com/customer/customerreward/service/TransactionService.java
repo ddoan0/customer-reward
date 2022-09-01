@@ -1,10 +1,8 @@
 package com.customer.customerreward.service;
 
-import com.customer.customerreward.domain.Transaction;
-
-import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Date;
 
 public interface TransactionService {
-    public String getRewardPoints(long id);
+    public int getRewardPoints(long id, LocalDate startDate, LocalDate endDate);
 }
