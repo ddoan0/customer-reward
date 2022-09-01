@@ -9,12 +9,12 @@ This project contains 2 restful endpoints
 
 
 ```
-/customers/{id}/rewardpoints
+/transactions/{id}/rewardpoints
 This endpoint calculates total reward points for a customer
 ```
 
 ```
-/customers/{id}/rewardpoints/{startMonth}/{endMonth}
+/transactions/{id}/rewardpoints/{startMonth}/{endMonth}
 This endpoint calculates reward points for a customer in a specified
 time period with the startMonth and endMonth parameters in 
 'YYYY-MM-DD' format
