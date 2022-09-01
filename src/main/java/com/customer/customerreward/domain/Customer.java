@@ -1,14 +1,42 @@
 package com.customer.customerreward.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table(name="customer")
 public class Customer {
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    private @Id @GeneratedValue Long id;
     private String name;
-    private List<Transaction> transactionsList;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Transaction> transactionsList;
+
+    public Customer() {}
+
+    public Customer(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Transaction> getTransactionsList() {
+        return transactionsList;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
